@@ -1,4 +1,3 @@
-# Amor-de-mi-vida
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -53,6 +52,11 @@
             opacity: 0;
             transition: opacity 2s ease-in-out;
         }
+        .letra {
+            opacity: 0;
+            display: inline-block;
+            transition: opacity 0.5s ease-in-out;
+        }
         .gif-romantico {
             width: 100px;
             height: 100px;
@@ -65,12 +69,12 @@
     <div id="carta-animada"></div>
     <div id="mensaje" onclick="iniciarRompecabezas()">Te llegó una carta, ábrela</div>
     <div id="puzzle-container">
-        <div class="puzzle-piece" style="background-image: url('carta.jpg'); background-position: 50% 10%; border-radius: 50% 50% 0 0;"></div>
-        <div class="puzzle-piece" style="background-image: url('carta.jpg'); background-position: 20% 30%; border-radius: 50% 50% 0 0;"></div>
-        <div class="puzzle-piece" style="background-image: url('carta.jpg'); background-position: 80% 30%; border-radius: 50% 50% 0 0;"></div>
-        <div class="puzzle-piece" style="background-image: url('carta.jpg'); background-position: 30% 50%; border-radius: 0 0 50% 50%;"></div>
-        <div class="puzzle-piece" style="background-image: url('carta.jpg'); background-position: 70% 50%; border-radius: 0 0 50% 50%;"></div>
-        <div class="puzzle-piece" style="background-image: url('carta.jpg'); background-position: 50% 80%; border-radius: 0 0 50% 50%;"></div>
+        <div class="puzzle-piece" style="background-image: url('carta.jpg'); background-position: 50% 10%;"></div>
+        <div class="puzzle-piece" style="background-image: url('carta.jpg'); background-position: 20% 30%;"></div>
+        <div class="puzzle-piece" style="background-image: url('carta.jpg'); background-position: 80% 30%;"></div>
+        <div class="puzzle-piece" style="background-image: url('carta.jpg'); background-position: 30% 50%;"></div>
+        <div class="puzzle-piece" style="background-image: url('carta.jpg'); background-position: 70% 50%;"></div>
+        <div class="puzzle-piece" style="background-image: url('carta.jpg'); background-position: 50% 80%;"></div>
     </div>
     <div id="mensaje-final">Gracias por llegar a mi vida<br>
     y<br>
@@ -89,6 +93,7 @@
     <img src="corazon3.gif" class="gif-romantico" style="bottom: 10%; left: 10%;">
     <img src="corazon4.gif" class="gif-romantico" style="bottom: 10%; right: 10%;">
     
+    
     <script>
         function iniciarRompecabezas() {
             document.getElementById("carta-animada").style.display = "none";
@@ -106,15 +111,11 @@
             setTimeout(() => {
                 let mensajeFinal = document.getElementById("mensaje-final");
                 mensajeFinal.style.display = "block";
-                setTimeout(() => {
-                    mensajeFinal.style.opacity = "1";
-                }, 500);
-                
-                let gifs = document.querySelectorAll(".gif-romantico");
-                gifs.forEach((gif, index) => {
+                let letras = document.querySelectorAll(".letra");
+                letras.forEach((letra, index) => {
                     setTimeout(() => {
-                        gif.style.display = "block";
-                    }, index * 500);
+                        letra.style.opacity = "1";
+                    }, index * 300);
                 });
             }, piezas.length * 700 + 1000);
         }
